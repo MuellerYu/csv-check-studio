@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="An interactive CSV cleanup and reconciliation sample. Flag duplicates, preserve missing values and verify exact decimal totals locally in your browser.">
+  <title>CSV Check Studio · Mueller</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar"><a href="./" class="brand"><span class="mark">C</span> CSV Check Studio</a><span class="badge">Independent project sample</span></header>
+  <main>
+    <section class="intro">
+      <div><p class="eyebrow">DATA CLEANUP · VALIDATION · HANDOVER</p><h1>Messy export.<br>Clear, checked output.</h1><p class="lead">See every change, keep uncertain values for review, and check your totals before using the result.</p><div class="privacy"><span class="dot"></span>CSV processing stays in your browser. No server upload.</div></div>
+      <aside class="offer"><p class="eyebrow">FIXED SCOPE SERVICE</p><div class="price">$100 <span>starting quote</span></div><p>One CSV up to 10,000 rows, agreed cleanup rules, a change report, and editable source with run instructions.</p><a class="button primary" href="https://upwork.com/freelancers/~01f26bf42914b52bd2" target="_blank" rel="noopener">Discuss a project on Upwork <span>↗</span></a><p class="fine">AI-assisted work with review and validation. Final scope, price, deadline and one correction round confirmed after sample review. This is an original demo, not a client case study.</p></aside>
+    </section>
+    <section class="workspace" aria-label="Interactive CSV demonstration">
+      <div class="panel input-panel">
+        <div class="panel-title"><div><p class="eyebrow">01 / INPUT & RULES</p><h2>Start with a CSV</h2></div><button id="sample" class="button subtle">Load sample</button></div>
+        <p class="muted small">The sample contains fictional records. Paste comma-delimited UTF-8 CSV with a header. Maximum 2 MB / 10,000 rows.</p>
+        <label for="csv" class="sr-only">CSV input</label><textarea id="csv" spellcheck="false" placeholder="record_id,customer,amount&#10;001,Example,19.95"></textarea>
+        <div class="rules"><label><input id="trim" type="checkbox" checked> Trim leading and trailing whitespace</label><label><input id="dedup" type="checkbox"> Remove exact duplicate rows, keeping the first</label><label class="select-label" for="numeric">Optional numeric total <select id="numeric"><option value="">No numeric column</option></select></label></div>
+        <p class="fine">No values are guessed. Different rows with the same ID are preserved. Numbers must use a dot decimal without currency symbols or grouping separators.</p>
+        <button id="run" class="button primary">Run checks <span>→</span></button>
+        <p id="error" role="alert" class="error" hidden></p>
+      </div>
+      <div class="panel output-panel">
+        <div class="panel-title"><div><p class="eyebrow">02 / VERIFIED OUTPUT</p><h2>Review before you export</h2></div><span id="status" class="badge">Ready to check</span></div>
+        <p id="stale" class="notice" hidden>Input or rules changed. Run checks again to update results and downloads.</p>
+        <div id="empty" class="empty"><div class="grid-icon">▤</div><h3>A clear audit trail, not a black box.</h3><p>Run the fictional sample to see duplicate flags, preserved blanks and exact decimal totals.</p></div>
+        <div id="results" hidden>
+          <div class="metrics"><div><span>Input rows</span><strong id="inputRows"></strong></div><div><span>Output rows</span><strong id="outputRows"></strong></div><div><span>Duplicates</span><strong id="duplicateRows"></strong></div><div><span>Trimmed cells</span><strong id="trimmedCells"></strong></div></div>
+          <div id="totals" class="totals" hidden></div>
+          <h3>Cleaned data <span class="muted small">first 8 rows</span></h3><div class="table-wrap"><table id="preview"></table></div>
+          <h3>Change & issue log <span id="issueCount" class="muted small"></span></h3><div class="table-wrap"><table id="issues"></table></div><p class="fine">On-screen log shows up to 20 entries. The report includes all entries. Record numbers refer to logical CSV records, including the header.</p>
+          <div class="downloads"><button id="downloadCSV" class="button primary">Download cleaned CSV</button><button id="downloadReport" class="button subtle">Download full JSON report</button></div>
+          <p class="fine">CSV export adds an apostrophe to formula-like text; these export changes are recorded in the JSON report. CSV has no type metadata: import identifier columns as text to retain leading zeros.</p>
+        </div>
+      </div>
+    </section>
+    <section class="handover"><div><p class="eyebrow">WHAT A PAID DELIVERY INCLUDES</p><h2>A file you can use.<br>A process you can repeat.</h2></div><ol><li><strong>Agreed rules</strong><span>An anonymized sample and explicit acceptance criteria before starting.</span></li><li><strong>Checked outputs</strong><span>Cleaned CSV, preserved exceptions, row counts and relevant total checks.</span></li><li><strong>Editable handover</strong><span>Source, run instructions and one correction round within the agreed scope.</span></li></ol></section>
+  </main><footer><span>Mueller · AI-assisted implementation, reviewed and tested.</span><a href="https://github.com/MuellerYu/csv-check-studio" target="_blank" rel="noopener">Inspect the source ↗</a></footer>
+  <script type="module" src="app.mjs"></script>
+</body>
+</html>
