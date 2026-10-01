@@ -32,7 +32,8 @@
           <div id="totals" class="totals" hidden></div>
           <h3>Cleaned data <span class="muted small">first 8 rows</span></h3><div class="table-wrap"><table id="preview"></table></div>
           <h3>Change & issue log <span id="issueCount" class="muted small"></span></h3><div class="table-wrap"><table id="issues"></table></div><p class="fine">On-screen log shows up to 20 entries. The report includes all entries. Record numbers refer to logical CSV records, including the header.</p>
-          <div class="downloads"><button id="downloadCSV" class="button primary">Download cleaned CSV</button><button id="downloadReport" class="button subtle">Download full JSON report</button></div>
+          <div class="downloads"><button id="downloadCSV" class="button primary">Download cleaned CSV</button><button id="downloadReport" class="button subtle">Download full JSON report</button><button id="showExport" class="button subtle">Show export text</button></div>
+          <div id="exportFallback" hidden><label for="exportText" class="small">Cleaned CSV text · select and copy if browser downloads are unavailable</label><textarea id="exportText" readonly spellcheck="false"></textarea></div>
           <p class="fine">CSV export adds an apostrophe to formula-like text; these export changes are recorded in the JSON report. CSV has no type metadata: import identifier columns as text to retain leading zeros.</p>
         </div>
       </div>

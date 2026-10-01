@@ -17,6 +17,7 @@ Serve this folder with any static HTTP server, for example `python3 -m http.serv
 - Exact full-row duplicates are flagged by default. Removal requires selecting that rule. Equal IDs with different data remain separate.
 - Optional totals use exact integer decimal arithmetic. Dot decimals only; no grouping, currency or exponent notation. Invalid and blank values are counted as exclusions and totals are labeled partial. No currency or business meaning is inferred.
 - Export guards formula-like text with a leading apostrophe. The JSON report records these modifications. CSV contains no type metadata; import identifier columns as text to keep leading zeros.
+- If the browser does not support downloads, use **Show export text** to select and copy the complete cleaned CSV. Download event capture could not be verified in the Codex in-app browser; the text fallback and serialization tests are verified.
 - Numeric input is limited to 100 digits including up to 20 fractional digits. Browser preview is bounded; report and CSV include all accepted rows.
 
 AI assisted the implementation. Validation results are in the public CI workflow and tests. No professional credentials, client history or income are implied.
