@@ -21,3 +21,7 @@ Serve this folder with any static HTTP server, for example `python3 -m http.serv
 - Numeric input is limited to 100 digits including up to 20 fractional digits. Browser preview is bounded; report and CSV include all accepted rows.
 
 AI assisted the implementation. Validation results are in the public CI workflow and tests. No professional credentials, client history or income are implied.
+
+## Downloadable toolkit
+
+[Preview the CSV Cleanup Kit](https://muelleryu.github.io/csv-check-studio/kit.html). It adds an offline package, file import, reusable rules, identifier conflict flags, required-value checks and audit CSV exports. The toolkit's checkout is not connected yet; the page collects no payments. The original free demo remains available. Product preparation is not evidence of sales or revenue.

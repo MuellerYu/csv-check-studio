@@ -1,7 +1,8 @@
 export const MAX_ROWS = 10000;
 export const MAX_BYTES = 2_000_000;
 
-export function parseCSV(input) {
+export function parseCSV(input, { delimiter = ',' } = {}) {
+  if (![',', ';', '\t'].includes(delimiter)) throw new Error('Choose comma, semicolon or tab as the delimiter.');
   if (new TextEncoder().encode(input).length > MAX_BYTES) throw new Error('Use a CSV smaller than 2 MB.');
   const text = input.replace(/^\uFEFF/, '');
   const rows = [];
@@ -22,7 +23,7 @@ export function parseCSV(input) {
       } else cell += c;
       continue;
     }
-    if (c === ',') { touched = true; finishCell(); }
+    if (c === delimiter) { touched = true; finishCell(); }
     else if (c === '\r' || c === '\n') {
       if (c === '\r' && text[i + 1] === '\n') i++;
       finishRow();
@@ -64,8 +65,8 @@ export function total(values) {
   return { value: valid.length ? formatted : null, valid: valid.length, excluded: parsed.length - valid.length };
 }
 
-export function analyze(input, { trim = true, dropDuplicates = false, numericColumn = '' } = {}) {
-  const { headers, rows } = parseCSV(input);
+export function analyze(input, { trim = true, dropDuplicates = false, numericColumn = '', delimiter = ',' } = {}) {
+  const { headers, rows } = parseCSV(input, { delimiter });
   const cleaned = [], issues = [], seen = new Map();
   let trimmedCells = 0, duplicateRows = 0;
   const numericIndex = numericColumn ? headers.indexOf(numericColumn) : -1;
@@ -92,7 +93,7 @@ export function analyze(input, { trim = true, dropDuplicates = false, numericCol
   });
   const before = numericIndex < 0 ? null : total(rows.map(r => r[numericIndex]));
   const after = numericIndex < 0 ? null : total(cleaned.map(r => r[numericIndex]));
-  return { headers, rows: cleaned, issues, stats: { inputRows: rows.length, outputRows: cleaned.length, duplicateRows, removedRows: rows.length - cleaned.length, trimmedCells, numericColumn, before, after }, rules: { trim, dropDuplicates, missingValues: 'preserved', numericFormat: 'signed dot decimal, no currency or grouping, up to 20 decimal places', recordNumbers: 'logical CSV records including header; blank physical lines skipped' } };
+  return { headers, rows: cleaned, issues, stats: { inputRows: rows.length, outputRows: cleaned.length, duplicateRows, removedRows: rows.length - cleaned.length, trimmedCells, numericColumn, before, after }, rules: { trim, dropDuplicates, delimiter, missingValues: 'preserved', numericFormat: 'signed dot decimal, no currency or grouping, up to 20 decimal places', recordNumbers: 'logical CSV records including header; blank physical lines skipped' } };
 }
 
 export function safeCell(value) {
@@ -100,11 +101,12 @@ export function safeCell(value) {
   // Guard text against spreadsheet formula execution; retain strict numeric cells.
   return decimal(s) === null && /^[\s]*[=+\-@\t\r]/.test(s) ? "'" + s : s;
 }
-export function serializeCSV(rows, { spreadsheetSafe = true } = {}) {
+export function serializeCSV(rows, { spreadsheetSafe = true, delimiter = ',' } = {}) {
+  if (![',', ';', '\t'].includes(delimiter)) throw new Error('Choose comma, semicolon or tab as the delimiter.');
   return rows.map(row => row.map(v => {
     const s = spreadsheetSafe ? safeCell(v) : String(v);
-    return /[",\r\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
-  }).join(',')).join('\r\n') + '\r\n';
+    return s.includes(delimiter) || /["\r\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
+  }).join(delimiter)).join('\r\n') + '\r\n';
 }
 export function exportReport(result) {
   const changed = [result.headers, ...result.rows].flatMap((r, i) => r.flatMap((v, j) => safeCell(v) !== v ? [{ exportRecord: i + 1, column: result.headers[j], type: 'export formula guard', detail: 'An apostrophe is prepended to spreadsheet formula-like text in the CSV export.' }] : []));
