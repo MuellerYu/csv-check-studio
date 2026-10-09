@@ -24,4 +24,4 @@ AI assisted the implementation. Validation results are in the public CI workflow
 
 ## Downloadable toolkit
 
-[Preview the CSV Cleanup Kit](https://muelleryu.github.io/csv-check-studio/kit.html). It adds an offline package, file import, reusable rules, identifier conflict flags, required-value checks and audit CSV exports. The [product listing](https://payhip.com/b/r3JDO) is published at $9; seller payment connection is pending and purchases are not available yet. The original free demo remains available. Product preparation is not evidence of sales or revenue.
+[Preview the CSV Cleanup Kit](https://muelleryu.github.io/csv-check-studio/kit.html). It adds an offline package, file import, reusable rules, identifier conflict flags, required-value checks and audit CSV exports. The [product listing](https://payhip.com/b/r3JDO) is published at $9; PayPal is connected and the checkout is available. A $0 internal coupon checkout delivered the exact 7-file ZIP; payment settlement and paid customer revenue have not been verified. The original free demo remains available. Product preparation is not evidence of sales or revenue.
