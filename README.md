@@ -1,8 +1,14 @@
 # CSV Check Studio
 
-Original AI-assisted project sample for small CSV cleanup and reconciliation work. The sample records are fictional; this is not evidence of paid client work or earnings.
+Check a small contact-list CSV before importing it. Find exact duplicate rows, trim stray edge spaces, and keep conflicting records visible for review. Processing runs locally in your browser.
 
-Open the [live sample](https://muelleryu.github.io/csv-check-studio/) or discuss a scoped project via the [public Upwork profile](https://upwork.com/freelancers/~01f26bf42914b52bd2). Starting quote: $100 for one CSV up to 10,000 rows, agreed rules, a report and editable source. Scope, deadline, access and contract require agreement before paid work begins.
+**[Try the free browser checker](https://muelleryu.github.io/csv-check-studio/#demo)** · **[Preview the offline toolkit](https://muelleryu.github.io/csv-check-studio/kit.html)** · **[Buy CSV Cleanup Kit — $9 once](https://payhip.com/b/r3JDO)**
+
+For virtual assistants, small-business operators and CRM administrators checking recurring, small contact-list exports. The $9 download adds file import, saved rules, missing-required-value and basic email-format checks, conflicting-ID flags, and audit CSV exports. It works offline after download, with no subscription or installation.
+
+In the [fictional worked example](https://muelleryu.github.io/csv-check-studio/kit.html#contact-example), 5 input records become 4 after trimming and exact-row deduplication. Two different records with ID `002` both remain for review. The report flags one missing email, one email-format issue and one conflicting-ID group. This is an original test example, not a client result.
+
+The checker handles comma-delimited UTF-8 CSV up to 2 MB / 10,000 rows. It does not merge by ID, find replacement email addresses, verify email deliverability, map CRM fields, or guarantee a safe import. If you only need occasional basic checks, start with the free tool.
 
 No dependencies, analytics or server uploads. CSV calculations run in the browser. The hosting provider receives ordinary page requests. Do not post private customer data in GitHub issues.
 
@@ -24,4 +30,8 @@ AI assisted the implementation. Validation results are in the public CI workflow
 
 ## Downloadable toolkit
 
-[Preview the CSV Cleanup Kit](https://muelleryu.github.io/csv-check-studio/kit.html), including a [fictional contact-list before/after example](https://muelleryu.github.io/csv-check-studio/kit.html#contact-example) calculated by the toolkit engine. It adds an offline package, file import, reusable rules, identifier conflict flags, required-value checks and audit CSV exports. The [product listing](https://payhip.com/b/r3JDO) is published at $9; PayPal is connected and the checkout is available. A $0 internal coupon checkout delivered the exact 7-file ZIP; payment settlement and paid customer revenue have not been verified. The original free demo remains available. Product preparation is not evidence of sales or revenue.
+[CSV Cleanup Kit](https://payhip.com/b/r3JDO) costs $9 USD once. See the [preview, included files and fictional example](https://muelleryu.github.io/csv-check-studio/kit.html) before buying. The separate free checker remains available without a purchase. Implementation and marketing are AI-assisted; no paid customer results or income are claimed.
+
+## Need a custom cleanup?
+
+Discuss a scoped project via the [public Upwork profile](https://upwork.com/freelancers/~01f26bf42914b52bd2). Starting quote: $100 for one CSV up to 10,000 rows, agreed rules, a report and editable source. Scope, deadline, access and contract require agreement before paid work begins.
